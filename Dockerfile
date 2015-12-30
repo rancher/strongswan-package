@@ -21,6 +21,5 @@ RUN cd /usr/local && \
     find . -name "*.la" -o -name "*.a" -exec rm {} \; && \
     find . -name "*.so" -exec strip --strip-debug {} \; && \
     strip --strip-debug sbin/*
-RUN tar cvJf strongswan-${VERSION}.tar.xz $(find /usr/local \! -type d) && \
-    ls -lah strongswan-${VERSION}.tar.xz
-RUN ln -s /usr/local/libexec/ipsec/charon /usr/local/bin/charon
+RUN tar cvzf strongswan-${VERSION}.tar.gz $(find /usr/local \! -type d) && \
+    ls -lah strongswan-${VERSION}.tar.gz
