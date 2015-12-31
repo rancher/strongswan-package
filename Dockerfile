@@ -17,8 +17,9 @@ RUN ./configure \
     make install
 RUN cd /usr/local && \
     mv libexec/ipsec/charon sbin && \
-    rm -rf man bin/* sbin/ipsec libexec && \
-    find . -name "*.la" -o -name "*.a" -exec rm {} \; && \
+    rm -rf share bin/* sbin/ipsec libexec && \
+    find . -name "*.la" -exec rm -v {} \; && \
+    find . -name "*.a"  -exec rm -v {} \; && \
     find . -name "*.so" -exec strip --strip-debug {} \; && \
     strip --strip-debug sbin/*
 RUN tar cvzf strongswan-${VERSION}.tar.gz $(find /usr/local \! -type d) && \
