@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM armhf/ubuntu:16.04
 RUN apt-get update && apt-get install -y build-essential wget curl iproute2 && \
     apt-get build-dep -y strongswan
 
@@ -9,7 +9,6 @@ WORKDIR strongswan-${VERSION}
 RUN ./configure \
     --enable-swanctl \
 	--enable-gcm \
-    --enable-aesni \
     --enable-vici \
 	&& \
     make -j$(nproc) && \
