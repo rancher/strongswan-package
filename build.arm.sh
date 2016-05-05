@@ -5,8 +5,8 @@ set -e
 
 mkdir -p dist/artifacts
 
-VERSION="5.3.5"
-PACKAGE="-3"
+VERSION="5.4.0"
+PACKAGE="-1"
 VARIANT="_arm"
 
 docker build --build-arg VERSION=${VERSION} -t strongswan-build -f Dockerfile.arm .

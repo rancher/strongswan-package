@@ -2,15 +2,13 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y build-essential wget curl iproute2 && \
     apt-get build-dep -y strongswan
 
-ARG VERSION=5.3.5
+ARG VERSION=5.4.0
 RUN wget https://download.strongswan.org/strongswan-${VERSION}.tar.bz2
 RUN tar xvf strongswan-${VERSION}.tar.bz2
 WORKDIR strongswan-${VERSION}
 RUN ./configure \
-    --enable-swanctl \
 	--enable-gcm \
     --enable-aesni \
-    --enable-vici \
 	&& \
     make -j$(nproc) && \
     make install
