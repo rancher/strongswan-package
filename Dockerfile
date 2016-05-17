@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y build-essential wget curl iproute2 && \
     apt-get build-dep -y strongswan
 
-ARG VERSION=v5.4.0-rancher-1
+ARG VERSION=v5.4.0-rancher-2
 RUN wget https://github.com/rancher/strongswan/archive/${VERSION}.tar.gz
 RUN mkdir -p strongswan && \
     tar xvf ${VERSION}.tar.gz -C strongswan --strip-components=1
