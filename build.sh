@@ -4,7 +4,7 @@ set -e
 rm -rf dist
 mkdir -p dist/artifacts
 
-VERSION="5.3.5"
+VERSION="v5.4.0-rancher-2"
 PACKAGE="-2"
 
 docker build --build-arg VERSION=${VERSION} -t strongswan-build .
