@@ -1,11 +1,18 @@
 FROM ubuntu:16.04
 # FROM arm=armhf/ubuntu:16.04
+# FROM ppc64le/ubuntu:16.04
 
 ARG DAPPER_HOST_ARCH
 ENV HOST_ARCH=${DAPPER_HOST_ARCH} ARCH=${DAPPER_HOST_ARCH}
 
-RUN apt-get update && apt-get install -y build-essential wget curl iproute2 && \
-    apt-get build-dep -y strongswan
+RUN echo \
+  "deb-src http://ports.ubuntu.com/ubuntu-ports/ xenial-updates main restricted" \
+  >> /etc/apt/sources.list
+
+RUN apt-get -q update && \
+    apt-get -qy install build-essential wget curl iproute2 && \
+    apt-get build-dep -y strongswan && \
+    rm -rf /var/lib/apt/lists/*
 
 ARG VERSION=5.5.1
 ENV VERSION=${VERSION} PACKAGE="-rancher-1-1"
