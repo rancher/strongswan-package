@@ -13,5 +13,5 @@ mkdir -p ./dist/artifacts/
 ARTIFACT_PATH="./dist/artifacts/strongswan-v${VERSION}${PACKAGE}-${ARCH}.tar.gz"
 
 tar -cvzf "$ARTIFACT_PATH" $(find /usr/local \! -type d)
-shasum -a 256 | awk '{print $1}' > "$ARTIFACT_PATH.sha256"
+shasum -a 256  "$ARTIFACT_PATH" | awk '{print $1}' > "$ARTIFACT_PATH.sha256"
 ls -lah "$ARTIFACT_PATH"*
